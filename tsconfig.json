@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components": ["./client/imports/app/components"],
+      "@services": ["./client/imports/app/services"],
+      "@app/*": ["./client/imports/app/*"],
+      "@models": ["./shared/models"],
+      "@collections": ["./shared/collections"]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": false,
+  "angularCompilerOptions": {
+    "genDir": "aot",
+    "skipMetadataEmit": true
+  }
+}

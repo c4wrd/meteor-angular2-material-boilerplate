@@ -1,0 +1,23 @@
+<div class="todo-manager-container">
+    <h1>Todos</h1>
+    <form class="form-inline" (ngSubmit)="onSubmit()">
+        <md-input-container>
+            <input mdInput [(ngModel)]="taskModel" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Enter Todo" name="taskText"/>
+            <button md-button>Add</button>
+        </md-input-container>
+    </form>
+    <table class="table table-hover table-responsive">
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Completed</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr todo *ngFor="let $todo of todos | async"
+                [task]="$todo.task"
+                [completed]="$todo.completed"
+                (click)="toggleTodo($todo)"></tr>
+        </tbody>
+    </table>
+</div>
