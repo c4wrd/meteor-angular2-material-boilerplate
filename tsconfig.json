@@ -12,11 +12,11 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "@components": ["./client/imports/app/components"],
-      "@services": ["./client/imports/app/services"],
+      "@app:components": ["./client/imports/app/components"],
+      "@app:services": ["./client/imports/app/services"],
       "@app/*": ["./client/imports/app/*"],
-      "@models": ["./shared/models"],
-      "@collections": ["./shared/collections"]
+      "@shared:models": ["./shared/models"],
+      "@shared:collections": ["./shared/collections"]
     }
   },
   "exclude": [

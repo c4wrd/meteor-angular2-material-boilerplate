@@ -2,8 +2,8 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { ObservableCursor } from "meteor-rxjs";
 
-import { Todo } from "@models";
-import { TodoCollection } from "@collections";
+import { Todo } from "@shared:models";
+import { TodoCollection } from "@shared:collections";
 
 @Injectable()
 export class TodoService {

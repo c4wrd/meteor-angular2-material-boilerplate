@@ -3,8 +3,8 @@ import { Observable } from "rxjs";
 import template from "./todomanager.component.html";
 import style from "./todomanager.component.scss";
 
-import { Todo } from "@models";
-import { TodoService } from "@services";
+import { Todo } from "@shared:models";
+import { TodoService } from "@app:services";
 
 @Component({
     selector: 'todo-manager',

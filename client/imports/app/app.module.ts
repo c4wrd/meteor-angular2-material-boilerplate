@@ -5,8 +5,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
 
-import { TodoService } from "@services";
-import { TodoComponent, TodoManagerComponent } from "@components";
+import { TodoService } from "@app:services";
+import { TodoComponent, TodoManagerComponent } from "@app:components";
 import { AppComponent } from "./app.component";
 
 @NgModule({
