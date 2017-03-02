@@ -9,6 +9,9 @@ import { TodoService } from "@app:services";
 import { TodoComponent, TodoManagerComponent } from "@app:components";
 import { AppComponent } from "./app.component";
 
+import { Accounts } from "meteor/accounts-base";
+import { AccountsModule } from "angular2-meteor-accounts-ui"
+
 @NgModule({
   // Components, Pipes, Directive
   declarations: [
@@ -29,7 +32,8 @@ import { AppComponent } from "./app.component";
     BrowserModule,
     FormsModule,
     MaterialModule.forRoot(),
-    FlexLayoutModule.forRoot()
+    FlexLayoutModule.forRoot(),
+    AccountsModule
   ],
   // Main Component
   bootstrap: [ AppComponent ]

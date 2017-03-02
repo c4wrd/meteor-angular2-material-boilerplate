@@ -10,8 +10,28 @@
 </md-toolbar>
 <div class="flex-container app-container" 
     fxLayout="row" 
-    fxLayoutAlign="center center">
+    fxLayoutAlign="space-around center">
     <md-card class="todo-container">
         <todo-manager></todo-manager>
+    </md-card>
+    <md-card>
+        <md-card-title-group *ngIf="!user">
+            <md-card-title>Not logged in</md-card-title>
+            <md-card-subtitle>Please login to continue</md-card-subtitle>
+        </md-card-title-group>
+        <md-card-title-group *ngIf="!!user">
+            <md-card-title>{{user.services.google.given_name}}</md-card-title>
+            <md-card-subtitle>{{user.services.google.email}}</md-card-subtitle>
+        </md-card-title-group>
+        <img *ngIf="!!user" md-card-image src="{{user.services.google.picture}}">
+        <md-card-content>
+            <div *ngIf="!!error">
+                There was an issue logging in: {{ error }}
+            </div>
+        </md-card-content>
+        <md-card-actions align="center">
+            <button md-button (click)="login()" *ngIf="!user">Login</button>
+            <button md-button (click)="logout()" *ngIf="!!user">Logout</button>
+        </md-card-actions>
     </md-card>
 </div>

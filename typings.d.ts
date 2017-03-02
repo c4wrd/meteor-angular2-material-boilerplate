@@ -127,3 +127,11 @@ declare namespace Chai {
     always: SpyCalledAlways;
   }
 }
+
+declare module "meteor/service-configuration" {
+  interface ServiceConfig {
+    configurations: Mongo.Collection<any>;
+  }
+
+  const ServiceConfiguration: ServiceConfig;
+}
