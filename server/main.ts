@@ -13,8 +13,8 @@ Meteor.startup(() => {
         },
         {
             $set: {
-                clientId: "--REDACTED--",
-                secret: "--REDACTED--"
+                clientId: Meteor.settings["google"]["clientId"],
+                secret: Meteor.settings["google"]["secret"]
             }
         }
     )

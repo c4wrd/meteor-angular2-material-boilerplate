@@ -2,8 +2,8 @@
   "name": "angular2-meteor-base",
   "private": true,
   "scripts": {
-    "start": "meteor run",
-    "start:prod": "meteor run --production",
+    "start": "meteor --settings settings.json",
+    "start:prod": "meteor run --production --settings settings.json",
     "build": "meteor build ./build/",
     "clear": "meteor reset",
     "meteor:update": "meteor update --all-packages",
