@@ -1,36 +1,25 @@
 <div class="inset-container">
     <md-toolbar color="primary" class="mat-elevation-z6">
         <button md-button (click)="sidenav.toggle()">
-        <md-icon>menu</md-icon>
-    </button>
+            <md-icon>menu</md-icon>
+        </button>
         <span>Material.</span>
     </md-toolbar>
     <md-sidenav-container>
-        <md-sidenav #sidenav mode="side" opened="true" class="mat-elevation-z1">
-            <md-list>
+        <md-sidenav #sidenav
+            mode="side" 
+            opened="true" 
+            class="mat-elevation-z1">
+            <md-list *ngIf="!!user">
                 <user-card-list-item *ngIf="!!user" [user]="user.services.google">
                 </user-card-list-item>
             </md-list>
+            <md-list *ngIf="!user">
+                <md-list-item>
+                    <p>Please login</p>
+                </md-list-item>
+            </md-list>
         </md-sidenav>
-        <div class="inset-container" fxLayout="column" fxLayoutAlign="center center">
-            <md-card class="todo-container">
-                <todo-manager></todo-manager>
-            </md-card>
-            <md-card>
-                <md-card-header *ngIf="!user">
-                    <md-card-title>Not logged in</md-card-title>
-                    <md-card-subtitle>Please login to continue</md-card-subtitle>
-                </md-card-header>
-                <md-card-content>
-                    <div *ngIf="!!error">
-                        There was an issue logging in: {{ error }}
-                    </div>
-                </md-card-content>
-                <md-card-actions align="center">
-                    <button md-button (click)="login()" *ngIf="!user">Login</button>
-                    <button md-button (click)="logout()" *ngIf="!!user">Logout</button>
-                </md-card-actions>
-            </md-card>
-        </div>
+        <router-outlet></router-outlet>
     </md-sidenav-container>
 </div>

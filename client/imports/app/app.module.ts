@@ -4,13 +4,38 @@ import { BrowserModule } from "@angular/platform-browser";
 
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
-
-import { TodoService } from "@app:services";
-import { TodoComponent, TodoManagerComponent, UserCardListComponent } from "@app:components";
-import { AppComponent } from "./app.component";
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 
 import { Accounts } from "meteor/accounts-base";
-import { AccountsModule } from "angular2-meteor-accounts-ui"
+import {AccountsModule} from "angular2-meteor-accounts-ui"
+
+import { TodoService } from "@app:services";
+import { TodoComponent, 
+         TodoManagerComponent, 
+         UserCardListComponent,
+         LoginComponent } from "@app:components";
+import { AppComponent } from "./app.component";
+
+import {AuthGuard} from "angular2-meteor-accounts-ui";
+
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'todos',
+    pathMatch: 'full'
+  },
+  {
+    path: "login",
+    pathMatch: "full", 
+    component: LoginComponent
+  },
+  {
+    path: "todos",
+    pathMatch: "full",
+    component: TodoManagerComponent,
+    canActivate: [AuthGuard​​]
+  }
+]
 
 @NgModule({
   // Components, Pipes, Directive
@@ -18,7 +43,8 @@ import { AccountsModule } from "angular2-meteor-accounts-ui"
     AppComponent,
     TodoComponent,
     TodoManagerComponent,
-    UserCardListComponent
+    UserCardListComponent,
+    LoginComponent
   ],
   // Entry Components
   entryComponents: [
@@ -26,7 +52,8 @@ import { AccountsModule } from "angular2-meteor-accounts-ui"
   ],
   // Providers
   providers: [
-    TodoService
+    TodoService,
+    AuthGuard
   ],
   // Modules
   imports: [
@@ -34,7 +61,8 @@ import { AccountsModule } from "angular2-meteor-accounts-ui"
     FormsModule,
     MaterialModule.forRoot(),
     FlexLayoutModule.forRoot(),
-    AccountsModule
+    AccountsModule,
+    RouterModule.forRoot(routes)
   ],
   // Main Component
   bootstrap: [ AppComponent ]

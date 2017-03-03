@@ -47,8 +47,14 @@ body {
   background-color: #9E9E9E; // #EFEFEF;
   padding: 0px;
   margin: 0px;
+  font-family: "Roboto", sans-serif;
+}
+
+body, html, app, md-sidenav-container {
+  height: 100vh;
 }
 
 .inset-container {
   padding: 8px;
+  height: 100vh;
 }

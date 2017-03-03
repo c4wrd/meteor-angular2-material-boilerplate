@@ -21,19 +21,9 @@ export class AppComponent {
   constructor(public snackbar: MdSnackBar) {
     
   }
-  
-  login() {
-    this.error = null;
-    Meteor.loginWithGoogle({}, (err: Error) => {
-      if ( err ) {
-        this.error = err.message;
-        console.log(err);
-      }
-    });
-  }
 
   logout() {
-    this.error = null;
+    /*this.error = null;
     Meteor.logout((err: Error) => {
       if ( err ) {
         this.error = err.message;
@@ -44,7 +34,7 @@ export class AppComponent {
         }
         this.snackbar.open("Successfully logged out", null, opts);
       }
-    })
+    })*/
   }
 
 }
