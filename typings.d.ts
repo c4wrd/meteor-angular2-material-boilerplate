@@ -135,3 +135,21 @@ declare module "meteor/service-configuration" {
 
   const ServiceConfiguration: ServiceConfig;
 }
+
+declare module "meteor/accounts/google" {
+
+  interface GoogleAccount {
+    accessToken: string;
+    email: string;
+    expiresAt: number;
+    family_name: string;
+    gender: string;
+    given_name: string;
+    id: string;
+    locale: string;
+    name: string;
+    picture: string;
+    verified_email: boolean;
+  }
+
+}

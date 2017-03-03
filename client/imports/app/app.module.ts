@@ -6,7 +6,7 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { TodoService } from "@app:services";
-import { TodoComponent, TodoManagerComponent } from "@app:components";
+import { TodoComponent, TodoManagerComponent, UserCardListComponent } from "@app:components";
 import { AppComponent } from "./app.component";
 
 import { Accounts } from "meteor/accounts-base";
@@ -17,7 +17,8 @@ import { AccountsModule } from "angular2-meteor-accounts-ui"
   declarations: [
     AppComponent,
     TodoComponent,
-    TodoManagerComponent
+    TodoManagerComponent,
+    UserCardListComponent
   ],
   // Entry Components
   entryComponents: [
