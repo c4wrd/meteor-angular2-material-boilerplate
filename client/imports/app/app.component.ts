@@ -1,6 +1,7 @@
 import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
 import { Meteor } from 'meteor/meteor';
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 
 import { InjectUser } from "angular2-meteor-accounts-ui";
 
@@ -18,12 +19,16 @@ export class AppComponent {
   user: Meteor.User;
   error: any = null;
 
-  constructor(public snackbar: MdSnackBar) {
-    
+  constructor(public snackbar: MdSnackBar, public router: Router) {
+  
+  }
+  
+  login() {
+    this.router.navigate(["login"]);
   }
 
   logout() {
-    /*this.error = null;
+    this.error = null;
     Meteor.logout((err: Error) => {
       if ( err ) {
         this.error = err.message;
@@ -34,7 +39,7 @@ export class AppComponent {
         }
         this.snackbar.open("Successfully logged out", null, opts);
       }
-    })*/
+    });
   }
 
 }

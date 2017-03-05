@@ -1,10 +1,10 @@
-<div class="inset-container" fxLayout="column" fxLayoutAlign="center center">
+<md-card class="todo-manager-container" fxLayout="column" fxLayoutAlign="center center">
     <h1>Todos</h1>
     <form class="form-inline" (ngSubmit)="onSubmit()">
         <md-input-container>
             <input mdInput [(ngModel)]="taskModel" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Enter Todo" name="taskText"/>
-            <button md-button>Add</button>
         </md-input-container>
+        <button md-button>Add</button>
     </form>
     <table class="table table-hover table-responsive">
         <thead>
@@ -20,4 +20,4 @@
                 (click)="toggleTodo($todo)"></tr>
         </tbody>
     </table>
-</div>
+</md-card>

@@ -43,18 +43,29 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
   box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
 }
 
+@for $zValue from 0 through 24 {
+  .z-index-#{$zValue} {
+    z-index: $zValue;
+    position: relative;
+  }
+}
+
 body {
-  background-color: #9E9E9E; // #EFEFEF;
+  background-color: #fafafa; // #EFEFEF;
   padding: 0px;
   margin: 0px;
   font-family: "Roboto", sans-serif;
 }
 
-body, html, app, md-sidenav-container {
-  height: 100vh;
+body, html, md-sidenav-container {
+  height: 100%;
+  margin: 0px;
+}
+
+.app-container {
+    height: 100%;
 }
 
 .inset-container {
   padding: 8px;
-  height: 100vh;
 }
