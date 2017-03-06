@@ -3,7 +3,9 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-sidenav',
   template: `
-    <md-sidenav mode="side" [opened]="open">
+    <md-sidenav 
+      mode="over" 
+      [opened]="push">
       <md-nav-list>
         <ng-content></ng-content>
       </md-nav-list>

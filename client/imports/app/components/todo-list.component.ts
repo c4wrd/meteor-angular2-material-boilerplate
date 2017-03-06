@@ -7,7 +7,7 @@ import { Todo } from '@shared:models';
     <md-list>
         <todo-item *ngFor="let todo of todos"
             [todo]="todo"
-            (click)="todoItemClicked(todo)">
+            (click)="todoClicked.emit(todo)">
         </todo-item>
     </md-list>
     `
@@ -16,6 +16,6 @@ export class TodoListComponent {
     
     @Input() todos: Todo[];
 
-    @Output() todoItemClicked: EventEmitter<Todo>;
+    @Output() todoClicked = new EventEmitter<Todo>();
 
 }

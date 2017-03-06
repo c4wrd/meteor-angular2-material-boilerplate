@@ -10,7 +10,7 @@ import { Component, Output, Input, EventEmitter } from '@angular/core';
         <md-input-container>
           <input mdInput placeholder="Add todo" [(ngModel)]="text">
         </md-input-container>
-        <button md-button-raised (click)="addTodoClicked()">Add Todo</button>
+        <button md-raised-button (click)="addTodoClicked()">Add Todo</button>
       </md-card-content>
     </md-card>
   `,

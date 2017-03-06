@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, BehaviorSubject } from 'rxjs';
 import { ObservableCursor } from "meteor-rxjs";
 
 import { Todo } from "@shared:models";
@@ -8,14 +8,8 @@ import { TodoCollection } from "@shared:collections";
 @Injectable()
 export class TodoService {
 
-    private todoList: ObservableCursor<Todo>;
-
-    constructor() {
-        this.todoList = TodoCollection.find({});
-    }
-
-    getTodos(): Observable<Todo[]> {
-        return this.todoList.zone();
+    getTodos(): ObservableCursor<Todo> {
+        return TodoCollection.find({});
     }
 
     createTodo(task: string): Observable<String> {

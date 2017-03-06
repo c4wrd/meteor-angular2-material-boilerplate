@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { go, replace, search, show, back, forward } from '@ngrx/router-store';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Meteor } from "meteor/meteor";
 
 import { UserService } from "@app:services";
@@ -44,14 +44,16 @@ import * as fromRoot from '../reducers';
 export class LoginPage {
 
   error$: Observable<String>;
-  user$: Observable<Meteor.User>;
+  user$: Subscription;
 
   constructor(private store: Store<fromRoot.State>, userService: UserService) {
     //this.error$ = store.select(fromRoot.getAuthError);
     this.user$ = userService.getUser()
-      .filter(user => !!user)
-      .do(() => {
-        this.store.dispatch(go(['/']));
+      .subscribe((user) => {
+          let hasUser = !!user;
+          if (hasUser) {
+            this.store.dispatch(go(['/']));
+          }
       });
   }
 

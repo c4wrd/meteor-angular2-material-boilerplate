@@ -1,6 +1,6 @@
 import { Todo } from '@shared:models';
 
-import * as todos from "@actions/todos";
+import * as fromTodos from "@actions/todos";
 
 export interface State {
     todos: Todo[];
@@ -10,9 +10,9 @@ const initialState: State = {
     todos: []
 }
 
-export function reducer(state = initialState, action: todos.Actions): State {
+export function reducer(state = initialState, action: fromTodos.Actions): State {
     switch ( action.type ) {
-        case todos.ActionTypes.TODO_COLLECTION_UPDATED: {
+        case fromTodos.ActionTypes.TODO_COLLECTION_UPDATED: {
             let todos = action.payload as Todo[];
             return {
                 todos: todos

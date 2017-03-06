@@ -19,17 +19,17 @@ export function reducer(state = initialState, action: User.Actions): State {
             let user = action.payload as Meteor.User;
             let loggedIn = !!user;
             let error = null;
-            return Object.assign({}, {
+            return Object.assign({}, state, {
                 user,
                 loggedIn,
                 error
-            }, state);
+            });
         }
         case User.ActionTypes.LOGIN_FAILED: {
             let error = "There was an error logging into the application. Please refresh this page and try again";
-            return Object.assign({}, {
+            return Object.assign({}, state, {
                 error
-            }, state)
+            })
         }
         default:
             return state;

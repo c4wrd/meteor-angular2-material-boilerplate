@@ -13,6 +13,7 @@ import { TodoItemComponent } from './todo-item.component';
 import { TodoAddFormComponent } from "./todo-add-form.component"
 import { TodoListComponent } from './todo-list.component';
 import { ToolbarComponent } from './toolbar.component';
+import { GoogleProfileCardComponent } from './google-profile-card.component'
 
 export const COMPONENTS = [
   LayoutComponent,
@@ -21,7 +22,8 @@ export const COMPONENTS = [
   ToolbarComponent,
   TodoListComponent,
   TodoItemComponent,
-  TodoAddFormComponent
+  TodoAddFormComponent,
+  GoogleProfileCardComponent
 ];
 
 

@@ -14,12 +14,8 @@ export class AuthEffects {
         private userService: UserService
     ) { }
 
-    @Effect() $loadUser = this.actions$
-        .ofType(fromUser.ActionTypes.LOAD_USER)
-        .switchMap(() => {
-            return this.userService.getUser();
-        })
-        .map(user => ({ type: fromUser.ActionTypes.USER_DATA, payload: user }));
+    @Effect() $loadUser = this.userService.getUser()
+        .map(user => new fromUser.UserDataAction(user));
 
     @Effect() $login = this.actions$
         .ofType(fromUser.ActionTypes.LOGIN)
