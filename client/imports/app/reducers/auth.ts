@@ -1,21 +1,21 @@
-import * as user from "../actions/user";
+import * as User from "../actions/user";
 import { Meteor } from "meteor/meteor";
 
 export interface State {
     user?: Meteor.User;
-    userId?: string;
-    error?: string;
+    error: string;
     loggedIn: boolean;
 }
 
 const initialState: State = {
     user: null,
+    error: null,
     loggedIn: false
-}
+};
 
-export function reducer(state = initialState, action: user.Actions): State {
+export function reducer(state = initialState, action: User.Actions): State {
     switch ( action.type ) {
-        case user.ActionTypes.USER_DATA: {
+        case User.ActionTypes.USER_DATA: {
             let user = action.payload as Meteor.User;
             let loggedIn = !!user;
             let error = null;
@@ -25,7 +25,7 @@ export function reducer(state = initialState, action: user.Actions): State {
                 error
             }, state);
         }
-        case user.ActionTypes.LOGIN_FAILED: {
+        case User.ActionTypes.LOGIN_FAILED: {
             let error = "There was an error logging into the application. Please refresh this page and try again";
             return Object.assign({}, {
                 error

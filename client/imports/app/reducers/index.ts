@@ -7,10 +7,10 @@ import * as fromTodos from './todos';
 import * as fromAuth from './auth';
 
 export interface State {
-    layout: fromLayout.State,
-    todos: fromTodos.State,
-    auth: fromAuth.State,
-    router: fromRouter.RouterState
+    layout: fromLayout.State;
+    todos: fromTodos.State;
+    auth: fromAuth.State;
+    router: fromRouter.RouterState;
 }
 
 const reducers = {
@@ -20,8 +20,10 @@ const reducers = {
     router: fromRouter.routerReducer
 }
 
+let rootReducer = combineReducers(reducers);
+
 export function reducer(state: any, action: any) {
-    return combineReducers(reducers);
+    return rootReducer(state, action);
 }
 
 /**

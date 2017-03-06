@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Tracker } from "meteor/tracker";
 
+import { go } from '@ngrx/router-store';
+
 import { UserService } from '@app:services';
 import * as fromUser from "@actions/user";
 
@@ -16,23 +18,23 @@ export class AuthEffects {
     @Effect() loadUser$ = this.actions$
         .ofType(fromUser.ActionTypes.LOAD_USER)
         .switchMap(() => {
-            return this.userService.getUser()
+            return this.userService.getUser();
         })
-        .map(user => ({ type: fromUser.ActionTypes.USER_DATA, payload: user }))
+        .map(user => ({ type: fromUser.ActionTypes.USER_DATA, payload: user }));
 
-    @Effect({dispatch: false}) login$ = this.actions$
+    @Effect() login$ = this.actions$
         .ofType(fromUser.ActionTypes.LOGIN)
         .switchMap(() => {
-            return Observable.fromPromise(this.userService.login())
+            return Observable.fromPromise(this.userService.login());
         })
-            .map(user => ({ type: fromUser.ActionTypes.LOGIN_SUCCEEDED }))
+            .map(user => (go([''])))
             .catch(() => Observable.of({ type: fromUser.ActionTypes.LOGIN_FAILED }));
 
-    @Effect({dispatch: false}) logout$ = this.actions$
+    @Effect() logout$ = this.actions$
         .ofType(fromUser.ActionTypes.LOGOUT)
         .switchMap(() => {
-            return Observable.fromPromise(this.userService.logout())
+            return Observable.fromPromise(this.userService.logout());
         })
-            .map(result => ({ type: fromUser.ActionTypes.LOGOUT_SUCCEEDED }))
+            .map(_ => go(["login"]))
             .catch(() => Observable.of({ type: fromUser.ActionTypes.LOGOUT_FAILED }))
 }

@@ -12,10 +12,10 @@ import * as user from "@actions/user";
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-layout>
-      <app-sidenav [open]="sidenavOpen$ | async">
-
+      <app-sidenav [open]="showSidenav$ | async">
+        <p>sidenav</p>
       </app-sidenav>
-      <app-toolbar (menuClick)="openSidenav()">
+      <app-toolbar (menuClick)="toggleSidenav()">
         Material Todo Manager
       </app-toolbar>
       <router-outlet></router-outlet>
@@ -30,11 +30,7 @@ export class AppComponent {
     this.showSidenav$ = this.store.select(fromRoot.getSidenavOpen);
   }
 
-  closeSidenav() {
-    this.store.dispatch(new layout.CloseSidenavAction());
-  }
-
-  openSidenav() {
-    this.store.dispatch(new layout.OpenSidenavAction());
+  toggleSidenav() {
+    this.store.dispatch(new layout.ToggleSideNavAction());
   }
 }

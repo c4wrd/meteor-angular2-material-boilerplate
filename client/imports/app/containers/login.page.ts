@@ -17,7 +17,7 @@ import * as fromRoot from '../reducers';
         <md-card-title>Login</md-card-title>
         <md-card-subtitle>Please login to use this application</md-card-subtitle>
           <md-card-content>
-            {{ error$ | async }}
+            <!-- {{ error$ | async }} -->
           </md-card-content>
           <md-card-actions>
               <button md-button (click)="login()">Login with Google</button>
@@ -49,11 +49,11 @@ export class LoginPage {
   user$: Observable<Meteor.User>;
 
   constructor(private store: Store<fromRoot.State>, userService: UserService) {
-    this.error$ = store.select(fromRoot.getAuthError);
+    //this.error$ = store.select(fromRoot.getAuthError);
     this.user$ = userService.getUser()
       .filter(user => !!user)
       .do(() => {
-        this.store.dispatch(go(['/']))
+        this.store.dispatch(go(['/']));
       });
   }
 

@@ -10,15 +10,10 @@ const initialState: State = {
 
 export function reducer(state = initialState, action: layout.Actions): State {
     switch ( action.type ) {
-        case layout.ActionTypes.SIDENAV_OPEN: {
+        case layout.ActionTypes.SIDENAV_TOGGLE: {
             return {
-                sidenavOpen: true
-            }
-        }
-        case layout.ActionTypes.SIDENAV_CLOSED: {
-            return {
-                sidenavOpen: false
-            }
+                sidenavOpen: !state.sidenavOpen
+            };
         }
         default:
             return state;

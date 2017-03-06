@@ -2,20 +2,13 @@ import { Action } from '@ngrx/store';
 import { type } from "../util";
 
 export const ActionTypes = {
-  SIDENAV_OPEN:   type("SIDENAV_OPEN"),
-  SIDENAV_CLOSED:  type("SIDENAV_CLOSED")
+  SIDENAV_TOGGLE:   type("SIDENAV_TOGGLE"),
 };
 
 
-export class OpenSidenavAction implements Action {
-  type = ActionTypes.SIDENAV_OPEN;
+export class ToggleSideNavAction implements Action {
+  type = ActionTypes.SIDENAV_TOGGLE;
 }
-
-export class CloseSidenavAction implements Action {
-  type = ActionTypes.SIDENAV_CLOSED;
-}
-
 
 export type Actions
-  = OpenSidenavAction
-  | CloseSidenavAction;
+  = ToggleSideNavAction;
