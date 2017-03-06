@@ -17,7 +17,7 @@ import { ComponentsModule } from './components';
 import { AuthEffects } from './effects/user';
 import { TodoEffects } from './effects/todos';
 
-import { TodoService } from "@app:services";
+import { TodoService, UserService } from "@app:services";
 import { reducer } from './reducers';
 import { routes } from './routes';
 
@@ -51,7 +51,8 @@ const store = StoreModule.provideStore(reducer);
   ],
   // Providers
   providers: [
-    TodoService
+    TodoService,
+    UserService
   ],
   // Main Component
   bootstrap: [ AppComponent ]

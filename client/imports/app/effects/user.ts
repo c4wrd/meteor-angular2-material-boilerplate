@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Tracker } from "meteor/tracker";
 
-import { UserServive } from '@app:services';
+import { UserService } from '@app:services';
 import * as fromUser from "@actions/user";
 
 @Injectable()
 export class AuthEffects {
     constructor(
         private actions$: Actions,
-        private userService: UserServive
+        private userService: UserService
     ) { }
 
     @Effect() loadUser$ = this.actions$

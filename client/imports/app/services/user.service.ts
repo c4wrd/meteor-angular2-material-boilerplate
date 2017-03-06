@@ -7,7 +7,7 @@ import { Tracker } from 'meteor/tracker';
 import { Meteor } from "meteor/meteor";
 
 @Injectable()
-export class UserServive extends MeteorComponent {
+export class UserService extends MeteorComponent {
 
     private user: Observable<Meteor.User>;
     private computation: Tracker.Computation;
