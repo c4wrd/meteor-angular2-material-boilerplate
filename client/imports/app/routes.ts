@@ -1,14 +1,14 @@
 import { Routes } from '@angular/router';
+import { TodoManagerPage } from './containers/todo-manager.page';
 
 export const routes: Routes = [
 
     {
         path: '',
-        component: TodoPageComponent
-    },
+        component: TodoManagerPage
+    }/*,
     {
         path: 'login',
         component: LoginPageComponent
-    }
-
+    }*/
 ]

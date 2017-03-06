@@ -30,9 +30,9 @@ import { Todo } from '@shared:models';
   `]
 })
 export class TodoManagerPage {
-  books$: Observable<Todo[]>;
+  todos$: Observable<Todo[]>;
 
   constructor(store: Store<fromRoot.State>) {
-    this.books$ = store.select(fromRoot.getTodos);
+    this.todos$ = store.select(fromRoot.getTodos);
   }
 }

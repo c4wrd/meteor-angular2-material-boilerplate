@@ -1,10 +1,8 @@
-export * from "./todo/todo.component";
-export * from "./todomanager/todomanager.component";
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from "@angular/forms";
 import { RouterModule } from '@angular/router';
 
 import { LayoutComponent } from './layout.component';
@@ -30,6 +28,7 @@ export const COMPONENTS = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     MaterialModule,
     RouterModule
   ],

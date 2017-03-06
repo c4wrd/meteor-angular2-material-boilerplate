@@ -8,21 +8,33 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { Accounts } from "meteor/accounts-base";
 import { AccountsModule } from "angular2-meteor-accounts-ui"
 
+import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
 import { RouterStoreModule } from "@ngrx/router-store";
 import { RouterModule } from '@angular/router';
 
 import { ComponentsModule } from './components';
+import { AuthEffects } from './effects/user';
+import { TodoEffects } from './effects/todos';
+
 import { TodoService } from "@app:services";
-import { AppComponent } from "./app.component";
 import { reducer } from './reducers';
+import { routes } from './routes';
+
+import { AppComponent } from "./containers/app.container"
+import { TodoManagerPage } from './containers/todo-manager.page';
+
+const store = StoreModule.provideStore(reducer);
 
 @NgModule({
   imports: [
+    ComponentsModule,
     BrowserModule,
     FormsModule,
     MaterialModule.forRoot(),
     FlexLayoutModule.forRoot(),
+    EffectsModule.run(AuthEffects),
+    EffectsModule.run(TodoEffects),
     AccountsModule,
     RouterModule.forRoot(routes, { useHash: true }),
     StoreModule.provideStore(reducer),
@@ -30,7 +42,8 @@ import { reducer } from './reducers';
   ],
   // Components, Pipes, Directive
   declarations: [
-    AppComponent
+    AppComponent,
+    TodoManagerPage
   ],
   // Entry Components
   entryComponents: [

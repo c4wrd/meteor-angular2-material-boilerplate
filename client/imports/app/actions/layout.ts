@@ -1,8 +1,9 @@
 import { Action } from '@ngrx/store';
+import { type } from "../util";
 
 export const ActionTypes = {
-  SIDENAV_OPEN:   "SIDENAV_OPEN",
-  SIDENAV_CLOSED:  "SIDENAV_CLOSED"
+  SIDENAV_OPEN:   type("SIDENAV_OPEN"),
+  SIDENAV_CLOSED:  type("SIDENAV_CLOSED")
 };
 
 
