@@ -7,6 +7,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { Accounts } from "meteor/accounts-base";
 import { AccountsModule } from "angular2-meteor-accounts-ui"
+import { METEOR_PROVIDERS, MeteorReactive } from 'angular2-meteor';
 
 import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
@@ -22,7 +23,7 @@ import { TodoService, UserService } from "@app:services";
 import { reducer } from './reducers';
 import { routes } from './routes';
 
-import { AppComponent } from "./containers/app.container"
+import { AppComponent } from "./containers/app.container";
 import { TodoManagerPage } from './containers/todo-manager.page';
 import { LoginPage } from './containers/login.page';
 
@@ -30,17 +31,17 @@ const store = StoreModule.provideStore(reducer);
 
 @NgModule({
   imports: [
-    ComponentsModule,
     BrowserModule,
     FormsModule,
     MaterialModule.forRoot(),
     FlexLayoutModule.forRoot(),
+    AccountsModule,
+    StoreModule.provideStore(reducer),
+    RouterModule.forRoot(routes, { useHash: true }),
+    RouterStoreModule.connectRouter(),
     EffectsModule.run(AuthEffects),
     EffectsModule.run(TodoEffects),
-    AccountsModule,
-    RouterModule.forRoot(routes, { useHash: true }),
-    StoreModule.provideStore(reducer),
-    RouterStoreModule.connectRouter()
+    ComponentsModule
   ],
   // Components, Pipes, Directive
   declarations: [
@@ -56,7 +57,8 @@ const store = StoreModule.provideStore(reducer);
   providers: [
     TodoService,
     UserService,
-    AuthGuard
+    AuthGuard,
+    METEOR_PROVIDERS
   ],
   // Main Component
   bootstrap: [ AppComponent ]

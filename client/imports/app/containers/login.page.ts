@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { go, replace, search, show, back, forward } from '@ngrx/router-store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Meteor } from "meteor/meteor";
 
 import { UserService } from "@app:services";

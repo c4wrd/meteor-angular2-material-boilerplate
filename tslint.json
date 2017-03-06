@@ -1,0 +1,8 @@
+{
+	"rules": {
+		"no-unused-expression": true,
+		"curly": true,
+		"class-name": true,
+		"semicolon": ["always"]
+	}
+}

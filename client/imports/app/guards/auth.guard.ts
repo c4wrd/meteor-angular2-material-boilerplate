@@ -2,9 +2,10 @@ import { Injectable } from  '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { go } from '@ngrx/router-store'
 import { Store } from '@ngrx/store';
+import { Observable, Observer } from 'rxjs';
+import { Meteor } from 'meteor/meteor';
 
 import * as fromRoot from '../reducers';
-import { Observable, Observer } from "rxjs";
 
 @Injectable()
 export class AuthGuard implements CanActivate {

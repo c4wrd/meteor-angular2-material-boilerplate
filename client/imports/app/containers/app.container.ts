@@ -1,6 +1,6 @@
-import { Observable } from 'rxjs/Observable';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import * as fromRoot from '../reducers';
 import * as layout from '@actions/layout';

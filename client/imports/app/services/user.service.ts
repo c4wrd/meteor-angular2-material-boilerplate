@@ -1,4 +1,4 @@
-import { MeteorComponent } from 'angular2-meteor/dist/main';
+import { MeteorComponent, MeteorReactive } from 'angular2-meteor';
 import { Injectable } from "@angular/core";
 import { Observable, Observer } from "rxjs";
 import { ObservableCursor } from "meteor-rxjs";
@@ -7,7 +7,7 @@ import { Tracker } from 'meteor/tracker';
 import { Meteor } from "meteor/meteor";
 
 @Injectable()
-export class UserService extends MeteorComponent {
+export class UserService extends MeteorReactive {
 
     private user: Observable<Meteor.User>;
 
