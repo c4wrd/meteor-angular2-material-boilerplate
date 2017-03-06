@@ -16,7 +16,8 @@
       "@app:services": ["./client/imports/app/services"],
       "@app/*": ["./client/imports/app/*"],
       "@shared:models": ["./shared/models"],
-      "@shared:collections": ["./shared/collections"]
+      "@shared:collections": ["./shared/collections"],
+      "@actions/*": ["./client/imports/app/actions/*"]
     },
     "types": [
       "meteor-typings"
