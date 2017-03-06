@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import * as fromRoot from '../reducers';
+import * as fromTodos from '@actions/todos';
 import { Todo } from '@shared:models';
 
 
@@ -14,7 +15,10 @@ import { Todo } from '@shared:models';
       <md-card-title>Todo Manager</md-card-title>
     </md-card>
     <todo-add-form></todo-add-form>
-    <todo-list [todos]="todos$ | async"></todo-list>
+    <todo-list 
+        [todos]="todos$ | async"
+        (todoItemClicked)="todoItemClicked($event)">
+    </todo-list>
   `,
   /**
    * Container components are permitted to have just enough styles
@@ -32,7 +36,11 @@ import { Todo } from '@shared:models';
 export class TodoManagerPage {
   todos$: Observable<Todo[]>;
 
-  constructor(store: Store<fromRoot.State>) {
+  constructor(public store: Store<fromRoot.State>) {
     this.todos$ = store.select(fromRoot.getTodos);
+  }
+
+  todoItemClicked(todo: Todo) {
+      this.store.dispatch(new fromTodos.ToggleTodoCompleteAction(todo));
   }
 }

@@ -13,33 +13,31 @@ import * as fromRoot from '../reducers';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="login-container">
-      <md-card>
+      <md-card fxLayout="column" fxLayoutAlign="center center">
         <md-card-title>Login</md-card-title>
-        <md-card-subtitle>Please login to use this application</md-card-subtitle>
-          <md-card-content>
-            <!-- {{ error$ | async }} -->
-          </md-card-content>
-          <md-card-actions>
-              <button md-button (click)="login()">Login with Google</button>
-          </md-card-actions>
+        <md-card-subtitle>
+          Please login to use this application
+        </md-card-subtitle>
+        <md-card-content>
+          <!-- {{ error$ | async }} -->
+        </md-card-content>
+        <md-card-actions>
+            <button md-button (click)="login()">Login with Google</button>
+        </md-card-actions>
       </md-card>
     </div>
   `,
   styles: [`
     .login-container {
+      height: 80%;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
     }
     
-    md-card-actions {
-      display: flex;
-      justify-content: center;
-    }
-
-    md-card-title {
-      display: flex;
-      justify-content: center;
+    md-card {
+      width: 300px;
     }
   `]
 })

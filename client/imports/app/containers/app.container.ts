@@ -11,23 +11,25 @@ import * as user from "@actions/user";
   selector: 'app',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <app-layout>
-      <app-sidenav [open]="showSidenav$ | async">
-        <p>sidenav</p>
-      </app-sidenav>
+    <md-sidenav-container fullscreen>
       <app-toolbar (menuClick)="toggleSidenav()">
-        Material Todo Manager
+          Material Todo Manager
       </app-toolbar>
+      <md-sidenav *ngIf="$userLoggedIn | async" mode="side" opened="{{showSidenav$ | async}}">
+        <p>sidenav</p>
+      </md-sidenav>
       <router-outlet></router-outlet>
-    </app-layout>
+    </md-sidenav-container>
   `
 })
 export class AppComponent {
   showSidenav$: Observable<boolean>;
+  userLoggedIn$: Observable<boolean>;
 
   constructor(private store: Store<fromRoot.State>) {
     this.store.dispatch(new user.LoadUserAction());
     this.showSidenav$ = this.store.select(fromRoot.getSidenavOpen);
+    this.userLoggedIn$ = this.store.select(fromRoot.getIsUserLoggedIn);
   }
 
   toggleSidenav() {

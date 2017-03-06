@@ -5,9 +5,13 @@ import { TodoManagerPage } from './containers/todo-manager.page';
 import { LoginPage } from './containers/login.page';
 
 export const routes: Routes = [
-
     {
         path: '',
+        redirectTo: 'todos',
+        pathMatch: 'full'
+    },
+    {
+        path: 'todos',
         component: TodoManagerPage,
         canActivate: [AuthGuard]
     },

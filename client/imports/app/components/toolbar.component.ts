@@ -3,7 +3,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 @Component({
     selector: 'app-toolbar',
     template: `
-    <md-toolbar color="primary">
+    <md-toolbar class="z-depth-1 z-index-11" color="primary">
         <button md-icon-button (click)="menuClick.emit()">
             <md-icon>menu</md-icon>
         </button>

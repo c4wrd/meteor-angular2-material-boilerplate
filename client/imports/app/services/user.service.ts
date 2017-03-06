@@ -1,6 +1,6 @@
 import { MeteorComponent, MeteorReactive } from 'angular2-meteor';
 import { Injectable } from "@angular/core";
-import { Observable, Observer } from "rxjs";
+import { Observable, Observer, BehaviorSubject } from "rxjs";
 import { ObservableCursor } from "meteor-rxjs";
 import { Tracker } from 'meteor/tracker';
 
@@ -9,7 +9,7 @@ import { Meteor } from "meteor/meteor";
 @Injectable()
 export class UserService extends MeteorReactive {
 
-    private user: Observable<Meteor.User>;
+    private user$ = new BehaviorSubject<Meteor.User>(null);
 
     /**
      * Meteor computation that is auto-updated
@@ -19,16 +19,14 @@ export class UserService extends MeteorReactive {
 
     constructor() {
         super();
-        this.user = Observable.create((observer: Observer<Meteor.User>) => {
-            this.computation = this.autorun(() => {
-                const user = Meteor.user();
-                observer.next(user);
-            });
+        this.computation = this.autorun(() => {
+            const user = Meteor.user();
+            this.user$.next(user);
         });
     }
 
     getUser(): Observable<Meteor.User> {
-        return this.user;
+        return this.user$.asObservable();
     }
 
     login(): Promise<Meteor.User> {
