@@ -14,6 +14,7 @@ import { RouterStoreModule } from "@ngrx/router-store";
 import { RouterModule } from '@angular/router';
 
 import { ComponentsModule } from './components';
+import { AuthGuard } from './guards/auth.guard';
 import { AuthEffects } from './effects/user';
 import { TodoEffects } from './effects/todos';
 
@@ -23,6 +24,7 @@ import { routes } from './routes';
 
 import { AppComponent } from "./containers/app.container"
 import { TodoManagerPage } from './containers/todo-manager.page';
+import { LoginPage } from './containers/login.page';
 
 const store = StoreModule.provideStore(reducer);
 
@@ -43,7 +45,8 @@ const store = StoreModule.provideStore(reducer);
   // Components, Pipes, Directive
   declarations: [
     AppComponent,
-    TodoManagerPage
+    TodoManagerPage,
+    LoginPage
   ],
   // Entry Components
   entryComponents: [
@@ -52,7 +55,8 @@ const store = StoreModule.provideStore(reducer);
   // Providers
   providers: [
     TodoService,
-    UserService
+    UserService,
+    AuthGuard
   ],
   // Main Component
   bootstrap: [ AppComponent ]

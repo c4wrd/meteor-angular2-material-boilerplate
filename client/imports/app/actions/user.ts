@@ -2,6 +2,11 @@ import { Meteor } from 'meteor/meteor';
 import { Action } from '@ngrx/store';
 import { type } from "../util";
 
+/**
+ * Note: The login and logout
+ * succeed and failure messages
+ * are not handled for this implementation.
+ */
 export const ActionTypes = {
     LOAD_USER: type("LOAD_USER"),
     USER_DATA: type("USER_DATA"),
@@ -15,12 +20,12 @@ export const ActionTypes = {
 
 export class LoginUserAction implements Action {
     type = ActionTypes.LOGIN;
-    constructor(public payload: any) {}
+    constructor(public payload: any = undefined) {}
 }
 
 export class LogoutUserAction implements Action {
     type = ActionTypes.LOGOUT;
-    constructor(public payload: any) {}
+    constructor(public payload: any = undefined) {}
 }
 
 export class LoadUserAction implements Action {

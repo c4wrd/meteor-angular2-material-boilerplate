@@ -10,6 +10,11 @@ import { Meteor } from "meteor/meteor";
 export class UserService extends MeteorComponent {
 
     private user: Observable<Meteor.User>;
+
+    /**
+     * Meteor computation that is auto-updated
+     * and dispatched to our store.
+     */
     private computation: Tracker.Computation;
 
     constructor() {
