@@ -10,17 +10,24 @@ import * as fromRoot from '../reducers';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    constructor(private store: Store<fromRoot.State>) {
-        
-    }
+    constructor(private store: Store<fromRoot.State>) {}
 
-    canActivate(): boolean {
-        if (!!Meteor.user()) {
-            return true;
-        } else {
-            this.store.dispatch(go(["/login"]))
-            return false;
-        }
+    canActivate(): Observable<boolean> {
+        return Observable.create((observer: Observer<boolean>) => {
+            Tracker.autorun((comp) => {
+                if (!Meteor.loggingIn()) {
+                    let hasUser = !!Meteor.user();
+                    if ( hasUser ) {
+                        observer.next(true);
+                    } else {
+                        this.store.dispatch(go(["/login"]))
+                        observer.next(false);
+                    }
+                   observer.complete();
+                   comp.stop(); 
+                }
+            });
+        });
     }
 
 }
