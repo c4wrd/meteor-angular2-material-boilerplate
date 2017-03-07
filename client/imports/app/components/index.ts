@@ -6,7 +6,6 @@ import { FormsModule } from "@angular/forms";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { RouterModule } from '@angular/router';
 
-import { LayoutComponent } from './layout.component';
 import { SidenavItemComponent } from './sidenav-item.component';
 import { SidenavComponent } from './sidenav.component';
 import { TodoItemComponent } from './todo-item.component';
@@ -16,7 +15,6 @@ import { ToolbarComponent } from './toolbar.component';
 import { GoogleProfileCardComponent } from './google-profile-card.component'
 
 export const COMPONENTS = [
-  LayoutComponent,
   SidenavItemComponent,
   SidenavComponent,
   ToolbarComponent,

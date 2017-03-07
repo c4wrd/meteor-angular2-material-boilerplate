@@ -4,13 +4,18 @@ import { Component, Input } from '@angular/core';
   selector: 'app-sidenav',
   template: `
     <md-sidenav 
-      mode="over" 
-      [opened]="push">
+      mode="side" 
+      [opened]="open">
       <md-nav-list>
         <ng-content></ng-content>
       </md-nav-list>
     </md-sidenav>
-  `
+  `,
+  styles: [`
+      md-sidenav {
+        width: 300px;
+      }
+    `]
 })
 export class SidenavComponent {
   @Input() open = true;
