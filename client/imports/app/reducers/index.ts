@@ -45,3 +45,4 @@ export const getAuthState = (state: State) => state.auth;
 export const getAuthError = createSelector(getAuthState, fromAuth.getError);
 export const getIsUserLoggedIn = createSelector(getAuthState, fromAuth.isUserLoggedIn);
 export const getUser = createSelector(getAuthState, fromAuth.getUser);
+export const getGoogleProfile = createSelector(getAuthState, fromAuth.getGoogleProfile);
