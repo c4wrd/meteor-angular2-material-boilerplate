@@ -6,6 +6,7 @@ import { Tracker } from "meteor/tracker";
 import { TodoService } from '@app:services';
 import { Todo } from '@shared:models';
 import * as Todos from "@actions/todos";
+import { toAction } from "../util";
 
 @Injectable()
 export class TodoEffects {
@@ -22,13 +23,13 @@ export class TodoEffects {
         .ofType(Todos.ActionTypes.TODO_ADD)
         .map(toPayload)
         .switchMap(task => this.todoService.createTodo(task))
-            .map(id => ({ type: Todos.ActionTypes.TODO_ADD_SUCCESS }))
-            .catch(() => Observable.of({type: Todos.ActionTypes.TODO_ADD_FAILURE}))
+            .map(id => toAction(Todos.ActionTypes.TODO_ADD_SUCCESS, id))
+            .catch(() => Observable.of(toAction(Todos.ActionTypes.TODO_ADD_FAILURE)));
 
     @Effect({dispatch: false}) $toggleTodoCompletion = this.actions$
         .ofType(Todos.ActionTypes.TODO_TOGGLE_COMPLETE)
         .map(toPayload)
         .switchMap((todo: Todo) => this.todoService.toggleTodo(todo))
-            .map((updatedCount) => ({type: "TODO_EDIT_SUCCESS"}))
+            .map(() => toAction("TODO_EDIT_SUCCESS"));
 
 }

@@ -31,4 +31,14 @@ export class LoadTodosAction implements Action {
     constructor() {}
 }
 
+export class TodoAddSucessAction implements Action {
+    type = ActionTypes.TODO_ADD_SUCCESS;
+    constructor() {}
+}
+
+export class TodoAddFailureAction implements Action {
+    type = ActionTypes.TODO_ADD_FAILURE;
+    constructor() {}
+}
+
 export type Actions = AddTodoAction | ToggleTodoCompleteAction | TodoCollectionUpdatedAction;

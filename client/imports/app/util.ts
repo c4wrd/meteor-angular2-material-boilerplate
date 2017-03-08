@@ -8,3 +8,10 @@ export function type<T>(label: T | ''): T {
 
   return <T>label;
 }
+
+export function toAction(type: string, payload: any = undefined) {
+  return {
+    type,
+    payload
+  };
+}

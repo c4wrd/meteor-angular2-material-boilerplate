@@ -10,6 +10,10 @@ const styles = `
   md-sidenav {
     width: 300px;
   }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
 `;
 
 @Component({
@@ -19,17 +23,32 @@ const styles = `
     <md-sidenav-container fullscreen>
       <md-sidenav mode="side" [opened]="showSidenav$ | async">
         <md-nav-list>
-          <google-profile-item 
-              *ngIf="userLoggedIn$ | async" 
-              [googleAccount]="(user$ | async)?.services.google">
-          </google-profile-item>
+          <md-list-item><h3>App Name</h3></md-list-item>
         </md-nav-list>
       </md-sidenav>
       <app-toolbar (menuClick)="toggleSidenav()">
           Material Todo Manager
+          <div class="spacer"></div>
+          <button *ngIf="userLoggedIn$ | async" 
+                  md-icon-button 
+                  [mdMenuTriggerFor]="userMenu">
+            <md-icon>more_vert</md-icon>
+          </button>
       </app-toolbar>
       <router-outlet></router-outlet>
     </md-sidenav-container>
+
+    <md-menu #userMenu="mdMenu">
+      <md-nav-list>
+        <google-profile-item 
+              *ngIf="userLoggedIn$ | async" 
+              [googleAccount]="(user$ | async)?.services.google">
+        </google-profile-item>
+        <md-list-item (click)="logout()">
+          <h4 md-line>Logout</h4>
+        </md-list-item>
+      </md-nav-list>
+    </md-menu>
   `,
   styles: [styles]
 })
@@ -47,5 +66,9 @@ export class AppComponent {
 
   toggleSidenav() {
     this.store.dispatch(new layout.ToggleSideNavAction());
+  }
+
+  logout() {
+    this.store.dispatch(new user.LogoutUserAction());
   }
 }

@@ -11,10 +11,10 @@ export const ActionTypes = {
     LOAD_USER: type("LOAD_USER"),
     USER_DATA: type("USER_DATA"),
     LOGIN: type("LOGIN"),
-    LOGIN_SUCCEEDED: type("LOGIN_SUCCEEDED"),
+    LOGIN_SUCCESS: type("LOGIN_SUCCEEDED"),
     LOGIN_FAILED: type("LOGIN_FAILED"),
     LOGOUT: type("LOGOUT"),
-    LOGOUT_SUCCEEDED: type("LOGOUT_SUCCEEDED"),
+    LOGOUT_SUCCESS: type("LOGOUT_SUCCEEDED"),
     LOGOUT_FAILED: type("LOGOUT_FAILED")
 }
 
