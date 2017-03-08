@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Todo } from '@shared:models';
-import { type } from "../util";
+import { type } from "@app:utils";
 
 export const ActionTypes = {
     TODO_ADD: type("TODO_ADD"),

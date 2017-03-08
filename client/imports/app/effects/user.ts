@@ -4,8 +4,8 @@ import { Actions, Effect } from '@ngrx/effects';
 import { go } from '@ngrx/router-store';
 
 import { UserService } from '@app:services';
-import { toAction } from '../util';
-import * as User from "@actions/user";
+import { toAction } from '@app:utils';
+import * as User from "@app:actions/user";
 
 @Injectable()
 export class AuthEffects {

@@ -5,8 +5,8 @@ import { Tracker } from "meteor/tracker";
 
 import { TodoService } from '@app:services';
 import { Todo } from '@shared:models';
-import * as Todos from "@actions/todos";
-import { toAction } from "../util";
+import * as Todos from "@app:actions/todos";
+import { toAction } from "@app:utils";
 
 @Injectable()
 export class TodoEffects {

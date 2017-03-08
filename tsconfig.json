@@ -17,7 +17,10 @@
       "@app/*": ["./client/imports/app/*"],
       "@shared:models": ["./shared/models"],
       "@shared:collections": ["./shared/collections"],
-      "@actions/*": ["./client/imports/app/actions/*"]
+      "@app:actions/*": ["./client/imports/app/actions/*"],
+      "@app:reducers/*": ["./client/imports/app/reducers/*"],
+      "@app:reducers": ["./client/imports/app/reducers"],
+      "@app:utils": ["./client/imports/app/utils"]
     },
     "types": [
       "meteor-typings"

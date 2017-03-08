@@ -2,10 +2,13 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import * as fromRoot from '../reducers';
-import * as layout from '@actions/layout';
-import * as user from "@actions/user";
-import {GoogleAccount} from "meteor/accounts/google";
+import * as fromRoot from '@app:reducers';
+import * as layout from '@app:actions/layout';
+import * as user from "@app:actions/user";
+
+import { AppToolbarComponent } from './toolbar.component';
+
+import { GoogleAccount } from "meteor/accounts/google";
 
 @Component({
   selector: 'app',
@@ -17,21 +20,9 @@ import {GoogleAccount} from "meteor/accounts/google";
           <md-list-item><h3>App Name</h3></md-list-item>
         </md-nav-list>
       </md-sidenav>
-      <app-toolbar (menuClick)="toggleSidenav()">
-          Material Todo Manager
-          <div class="spacer"></div>
-          <user-avatar-button *ngIf="userLoggedIn$ | async" [image]="(googleProfile$ | async)?.picture" [mdMenuTriggerFor]="userMenu"></user-avatar-button>
-      </app-toolbar>
+      <app-toolbar [title]="'Material Todo Manager'"></app-toolbar>
       <router-outlet></router-outlet>
     </md-sidenav-container>
-    <md-menu #userMenu="mdMenu">
-      <md-nav-list>
-        <google-profile-item *ngIf="userLoggedIn$ | async" [googleAccount]="googleProfile$ | async"></google-profile-item>
-        <md-list-item (click)="logout()">
-          <h4 md-line>Logout</h4>
-        </md-list-item>
-      </md-nav-list>
-    </md-menu>
   `,
   styles: [`
     md-sidenav {
@@ -66,3 +57,5 @@ export class AppComponent {
     this.store.dispatch(new user.LogoutUserAction());
   }
 }
+
+export const APP_CONTAINER_DECLARATIONS = [AppToolbarComponent];

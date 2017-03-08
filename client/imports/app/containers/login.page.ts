@@ -5,8 +5,8 @@ import { Observable, Subscription } from 'rxjs';
 import { Meteor } from "meteor/meteor";
 
 import { UserService } from "@app:services";
-import * as user from "@actions/user";
-import * as fromRoot from '../reducers';
+import * as user from "@app:actions/user";
+import * as fromRoot from '@app:reducers';
 
 @Component({
   selector: 'login-page',

@@ -23,7 +23,7 @@ import { TodoService, UserService } from "@app:services";
 import { reducer } from './reducers';
 import { routes } from './routes';
 
-import { AppComponent } from "./containers/app.container";
+import { AppComponent, APP_CONTAINER_DECLARATIONS } from "./containers/app-container";
 import { TodoManagerPage } from './containers/todo-manager.page';
 import { LoginPage } from './containers/login.page';
 
@@ -47,7 +47,8 @@ const store = StoreModule.provideStore(reducer);
   declarations: [
     AppComponent,
     TodoManagerPage,
-    LoginPage
+    LoginPage,
+    APP_CONTAINER_DECLARATIONS
   ],
   // Entry Components
   entryComponents: [

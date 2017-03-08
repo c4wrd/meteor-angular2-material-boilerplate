@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { type } from "../util";
+import { type } from "@app:utils";
 
 export const ActionTypes = {
   SIDENAV_TOGGLE:   type("SIDENAV_TOGGLE"),

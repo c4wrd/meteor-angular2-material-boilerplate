@@ -11,7 +11,6 @@ import { SidenavComponent } from './sidenav.component';
 import { TodoItemComponent } from './todo-item.component';
 import { TodoAddFormComponent } from "./todo-add-form.component";
 import { TodoListComponent } from './todo-list.component';
-import { ToolbarComponent } from './toolbar.component';
 import { GoogleProfileCardComponent } from './google-profile-card.component';
 import { UserAvatarButton } from './user-avatar-button.component';
 
@@ -19,7 +18,6 @@ import { UserAvatarButton } from './user-avatar-button.component';
 export const COMPONENTS = [
   SidenavItemComponent,
   SidenavComponent,
-  ToolbarComponent,
   TodoListComponent,
   TodoItemComponent,
   TodoAddFormComponent,

@@ -1,6 +1,6 @@
 import { Todo } from '@shared:models';
 
-import * as fromTodos from "@actions/todos";
+import * as fromTodos from "@app:actions/todos";
 
 export interface State {
     todos: Todo[];

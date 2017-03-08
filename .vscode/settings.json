@@ -1,4 +1,11 @@
 {
     "eslint.enable": false,
-    "tslint.enable": true
+    "tslint.enable": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/.meteor": true
+    }
 }

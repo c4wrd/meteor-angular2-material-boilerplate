@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import * as fromRoot from '../reducers';
-import * as fromTodos from '@actions/todos';
+import * as fromRoot from '@app:reducers';
+import * as fromTodos from '@app:actions/todos';
 import { Todo } from '@shared:models';
-import * as todos from '@actions/todos';
+import * as todos from '@app:actions/todos';
 
 
 @Component({

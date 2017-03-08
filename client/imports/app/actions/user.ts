@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Action } from '@ngrx/store';
-import { type } from "../util";
+import { type } from "@app:utils";
 
 /**
  * Note: The login and logout
