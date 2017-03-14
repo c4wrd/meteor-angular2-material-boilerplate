@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Observable, Observer } from 'rxjs';
 import { Meteor } from 'meteor/meteor';
 
-import * as fromRoot from '@app:reducers';
+import * as fromRoot from '@app/modules';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
