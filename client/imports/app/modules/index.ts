@@ -7,22 +7,22 @@ import * as fromTodos from './todos';
 import * as fromAuth from './auth';
 
 export interface State {
-    layout: fromLayout.State;
-    todos: fromTodos.State;
-    auth: fromAuth.State;
+    layout: fromLayout.LayoutState;
+    todos: fromTodos.TodoState;
+    auth: fromAuth.AuthState;
     router: fromRouter.RouterState;
 }
 
 const reducers = {
-    layout: fromLayout.reducer,
-    todos: fromTodos.reducer,
-    auth: fromAuth.reducer,
+    layout: fromLayout.layoutReducer,
+    todos: fromTodos.todoReducer,
+    auth: fromAuth.authReducer,
     router: fromRouter.routerReducer
 }
 
 let rootReducer = combineReducers(reducers);
 
-export function reducer(state: any, action: any) {
+export function RootReducer(state: any, action: any) {
     return rootReducer(state, action);
 }
 
@@ -42,6 +42,7 @@ export const getTodos = createSelector(getTodosState, fromTodos.getTodos);
  * Authentication helpers
  */
 export const getAuthState = (state: State) => state.auth;
+
 export const getAuthError = createSelector(getAuthState, fromAuth.getError);
 export const getIsUserLoggedIn = createSelector(getAuthState, fromAuth.isUserLoggedIn);
 export const getUser = createSelector(getAuthState, fromAuth.getUser);

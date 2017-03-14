@@ -1,24 +1,25 @@
-import * as User from "../actions/user";
 import {Meteor} from "meteor/meteor";
 import {GoogleAccount} from "meteor/accounts/google";
 
-export interface State {
+import { AuthActionType, AuthActionTypes, AuthActions } from './actions';
+
+export interface AuthState {
     user?: Meteor.User;
     googleProfile?: GoogleAccount;
     error: string;
     loggedIn: boolean;
 }
 
-const initialState: State = {
+const initialState: AuthState = {
     user: null,
     googleProfile: null,
     error: null,
     loggedIn: false
 };
 
-export function reducer(state = initialState, action: User.Actions): State {
+export function authReducer(state = initialState, action: AuthActionType): AuthState {
     switch ( action.type ) {
-        case User.ActionTypes.USER_DATA: {
+        case AuthActionTypes.USER_DATA: {
             let user = action.payload as Meteor.User;
             let loggedIn = !!user;
             let googleProfile = null;
@@ -33,7 +34,7 @@ export function reducer(state = initialState, action: User.Actions): State {
                 user
             });
         }
-        case User.ActionTypes.LOGIN_FAILED: {
+        case AuthActionTypes.LOGIN_FAILED: {
             let error = "There was an error logging into the application. Please refresh this page and try again";
             return Object.assign({}, state, {
                 error
@@ -44,7 +45,7 @@ export function reducer(state = initialState, action: User.Actions): State {
     }
 }
 
-export const isUserLoggedIn = (state: State) => state.loggedIn;
-export const getUser = (state: State) => state.user;
-export const getError = (state: State) => state.error;
-export const getGoogleProfile = (state: State) => state.googleProfile;
+export const isUserLoggedIn = (state: AuthState) => state.loggedIn;
+export const getUser = (state: AuthState) => state.user;
+export const getError = (state: AuthState) => state.error;
+export const getGoogleProfile = (state: AuthState) => state.googleProfile;

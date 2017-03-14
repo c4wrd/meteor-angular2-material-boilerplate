@@ -1,14 +1,11 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-
-import * as fromRoot from '@app:reducers';
-import * as layout from '@app:actions/layout';
-import * as user from "@app:actions/user";
-
-import { AppToolbarComponent } from './toolbar.component';
-
 import { GoogleAccount } from "meteor/accounts/google";
+
+import * as fromRoot from '@app/modules';
+import * as Layout from '@app/modules/layout';
+import * as Auth from "@app/modules/auth";
 
 @Component({
   selector: 'app',
@@ -20,7 +17,7 @@ import { GoogleAccount } from "meteor/accounts/google";
           <md-list-item><h3>App Name</h3></md-list-item>
         </md-nav-list>
       </md-sidenav>
-      <app-toolbar [title]="'Material Todo Manager'"></app-toolbar>
+      <app-toolbar-container [title]="'Material Todo Manager'"></app-toolbar-container>
       <router-outlet></router-outlet>
     </md-sidenav-container>
   `,
@@ -34,7 +31,7 @@ import { GoogleAccount } from "meteor/accounts/google";
     }
   `]
 })
-export class AppComponent {
+export class AppContainer {
 
   showSidenav$: Observable<boolean>;
   userLoggedIn$: Observable<boolean>;
@@ -42,7 +39,7 @@ export class AppComponent {
   googleProfile$: Observable<GoogleAccount>;
 
   constructor(private store: Store<fromRoot.State>) {
-    this.store.dispatch(new user.LoadUserAction());
+    this.store.dispatch(new Auth.LoadUserAction());
     this.showSidenav$ = this.store.select(fromRoot.getSidenavOpen);
     this.userLoggedIn$ = this.store.select(fromRoot.getIsUserLoggedIn);
     this.googleProfile$ = this.store.select(fromRoot.getGoogleProfile);
@@ -50,12 +47,10 @@ export class AppComponent {
   }
 
   toggleSidenav() {
-    this.store.dispatch(new layout.ToggleSideNavAction());
+    this.store.dispatch(new Layout.ToggleSideNavAction());
   }
 
   logout() {
-    this.store.dispatch(new user.LogoutUserAction());
+    this.store.dispatch(new Auth.LogoutUserAction());
   }
 }
-
-export const APP_CONTAINER_DECLARATIONS = [AppToolbarComponent];

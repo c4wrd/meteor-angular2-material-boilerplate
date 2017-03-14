@@ -7,7 +7,7 @@ import { type } from "@app:utils";
  * succeed and failure messages
  * are not handled for this implementation.
  */
-export const ActionTypes = {
+export const AuthActionTypes = {
     LOAD_USER: type("LOAD_USER"),
     USER_DATA: type("USER_DATA"),
     LOGIN: type("LOGIN"),
@@ -19,23 +19,30 @@ export const ActionTypes = {
 }
 
 export class LoginUserAction implements Action {
-    type = ActionTypes.LOGIN;
+    type = AuthActionTypes.LOGIN;
     constructor(public payload: any = undefined) {}
 }
 
 export class LogoutUserAction implements Action {
-    type = ActionTypes.LOGOUT;
+    type = AuthActionTypes.LOGOUT;
     constructor(public payload: any = undefined) {}
 }
 
 export class LoadUserAction implements Action {
-    type = ActionTypes.LOAD_USER;
+    type = AuthActionTypes.LOAD_USER;
     constructor(public payload: any = undefined) {}
 }
 
 export class UserDataAction implements Action {
-    type = ActionTypes.USER_DATA;
+    type = AuthActionTypes.USER_DATA;
     constructor(public payload: Meteor.User) {}
 }
 
-export type Actions = LoginUserAction | LogoutUserAction | LoadUserAction | UserDataAction;
+export type AuthActionType = LoginUserAction | LogoutUserAction | LoadUserAction | UserDataAction;
+
+export const AuthActions = {
+    LoginUserAction,
+    LogoutUserAction,
+    LoadUserAction,
+    UserDataAction
+}

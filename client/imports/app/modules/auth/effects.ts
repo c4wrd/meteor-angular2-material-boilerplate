@@ -5,7 +5,7 @@ import { go } from '@ngrx/router-store';
 
 import { UserService } from '@app:services';
 import { toAction } from '@app:utils';
-import * as User from "@app:actions/user";
+import { AuthActionType, AuthActions, AuthActionTypes } from './actions';
 
 @Injectable()
 export class AuthEffects {
@@ -15,29 +15,29 @@ export class AuthEffects {
     ) { }
 
     @Effect() $loadUser = this.userService.getUser()
-        .map(user => new User.UserDataAction(user));
+        .map(user => new AuthActions.UserDataAction(user));
 
     @Effect() $login = this.actions$
-        .ofType(User.ActionTypes.LOGIN)
+        .ofType(AuthActionTypes.LOGIN)
         .switchMap(() => {
             return Observable.fromPromise(this.userService.login());
         })
-            .map(user => (toAction(User.ActionTypes.LOGIN_SUCCESS)))
-            .catch(() => Observable.of(toAction(User.ActionTypes.LOGIN_FAILED)));
+            .map(user => (toAction(AuthActionTypes.LOGIN_SUCCESS)))
+            .catch(() => Observable.of(toAction(AuthActionTypes.LOGIN_FAILED)));
 
     @Effect() $loginSuccessRedirect = this.actions$
-        .ofType(User.ActionTypes.LOGIN_SUCCESS)
+        .ofType(AuthActionTypes.LOGIN_SUCCESS)
         .map(() => go(['']));
 
     @Effect() $logout = this.actions$
-        .ofType(User.ActionTypes.LOGOUT)
+        .ofType(AuthActionTypes.LOGOUT)
         .switchMap(() => {
             return Observable.fromPromise(this.userService.logout());
         })
-            .map(() => toAction(User.ActionTypes.LOGOUT_SUCCESS))
-            .catch(() => Observable.of(toAction(User.ActionTypes.LOGOUT_FAILED)));
+            .map(() => toAction(AuthActionTypes.LOGOUT_SUCCESS))
+            .catch(() => Observable.of(toAction(AuthActionTypes.LOGOUT_FAILED)));
 
     @Effect() $logoutSuccessRedirect = this.actions$
-        .ofType(User.ActionTypes.LOGOUT_SUCCESS)
+        .ofType(AuthActionTypes.LOGOUT_SUCCESS)
         .map(() => go(['login']));
 }

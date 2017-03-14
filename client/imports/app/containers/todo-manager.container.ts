@@ -2,11 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import * as fromRoot from '@app:reducers';
-import * as fromTodos from '@app:actions/todos';
 import { Todo } from '@shared:models';
-import * as todos from '@app:actions/todos';
 
+import * as fromRoot from '@app/modules';
+import * as Todos from '@app/modules/todos';
 
 @Component({
   selector: 'todo-manager-page',
@@ -47,7 +46,7 @@ import * as todos from '@app:actions/todos';
     }
   `]
 })
-export class TodoManagerPage {
+export class TodoManagerContainer {
 
   todos$: Observable<Todo[]>;
 
@@ -56,11 +55,11 @@ export class TodoManagerPage {
   }
 
   todoItemClicked(todo: Todo) {
-      this.store.dispatch(new fromTodos.ToggleTodoCompleteAction(todo));
+      this.store.dispatch(new Todos.ToggleTodoCompleteAction(todo));
   }
 
   addTodo(todo: string) {
-      this.store.dispatch(new fromTodos.AddTodoAction(todo));
+      this.store.dispatch(new Todos.AddTodoAction(todo));
   }
 
 }

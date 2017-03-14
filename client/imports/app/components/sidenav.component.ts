@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-sidenav',
   template: `
-    <md-sidenav 
+    <md-sidenav
       mode="side" 
       [opened]="open">
       <md-nav-list>

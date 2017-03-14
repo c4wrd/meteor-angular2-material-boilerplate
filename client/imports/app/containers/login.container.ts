@@ -5,8 +5,8 @@ import { Observable, Subscription } from 'rxjs';
 import { Meteor } from "meteor/meteor";
 
 import { UserService } from "@app:services";
-import * as user from "@app:actions/user";
-import * as fromRoot from '@app:reducers';
+import * as User from "@app/modules/auth";
+import * as fromRoot from '@app/modules';
 
 @Component({
   selector: 'login-page',
@@ -41,7 +41,7 @@ import * as fromRoot from '@app:reducers';
     }
   `]
 })
-export class LoginPage {
+export class LoginContainer {
 
   error$: Observable<String>;
   user$: Subscription;
@@ -58,7 +58,7 @@ export class LoginPage {
   }
 
   login() {
-    this.store.dispatch(new user.LoginUserAction());
+    this.store.dispatch(new User.LoginUserAction());
   }
 
 }

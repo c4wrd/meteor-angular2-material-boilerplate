@@ -11,6 +11,7 @@
     "test:ci": "meteor test --once --driver-package dispatch:mocha-phantomjs"
   },
   "devDependencies": {
+    "@ngrx/store-devtools": "^3.2.3",
     "@types/chai": "3.4.35",
     "@types/meteor": "^1.3.31",
     "@types/mocha": "2.2.39",
